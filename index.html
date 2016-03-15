@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Daily Weather</title>
     <link rel="stylesheet" type="text/css" href="build/main.css">
+    <link rel="icon" type="image/icon" href="src/img/weather.png">
 </head>
 <body>
+    <input id="input" placeholder="Input City ID"></input><span><button>Submit</button></span>
+    <h1 id="city"></h1>
+    <div class="city-info"></div>
+    <div class="main"></div>
+    <script id="weather-template" type="text/template">
+        <ul class="temp">
+            <li class="weather-description">The weather for: <span><%= new Date(get("dt") * 1000).toDateString() %></span> is <%= get("weather")[0].description %></li>
+            <li class="temp">Lo: <%= get("temp").min %> &#8457</li>
+            <li class="temp">High: <%= get("temp").max %> &#8457</li>
+            <li class="humidity">Humidity: <%= get("humidity") %></li>
+            <li class="wind">Wind Speed: <%= get("speed") %> <%= get("deg") %></li>
+        </ul>
+    </script>
+    <script src="node_modules/underscore/underscore.js" type="text/javascript"></script>
+    <script src="src/js/jquery.js" type="text/javascript"></script>
+    <script src="node_modules/backbone/backbone.js" type="text/javascript"></script>
     <script src="src/js/main.js" type="text/javascript"></script>
 </body>
 </html>
